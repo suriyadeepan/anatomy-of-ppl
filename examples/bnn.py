@@ -25,7 +25,9 @@ def toy_parabolic_fn(x):
 def toy_parabolic_data(n):  # TODO : use `n`
   # x = torch.tensor([-2, -1.8, -1, 1, 1.8, 2]).reshape(-1, 1)
   # x = torch.arange(0., 1., 0.2).reshape(-1, 1)
-  x = torch.tensor([0., 0.4, 0.6, 1.]).reshape(-1, 1)
+  # x = torch.tensor([0., 0.4, 0.6, 1.]).reshape(-1, 1)
+  x = torch.tensor([0., 0.5]).reshape(-1, 1)
+  # x = torch.tensor([0., 0.5, 1.]).reshape(-1, 1)
   y = toy_parabolic_fn(x)
   return x, y
 

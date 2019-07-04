@@ -7,14 +7,13 @@ from torch.distributions import constraints
 import pyro.distributions as pdist
 import torch.distributions as tdist
 
-import plots
 import numpy as np
 
 from random import shuffle
 from tqdm import tqdm
 
 
-def iris(datafile='./iris.data'):
+def iris(datafile='examples/iris.data'):
   # label to index lookup
   # label2idx = { 'Iris-setosa' : 0, 'Iris-versicolor' : 1, 'Iris-virginica' : 2 }
   label2idx = { 'Iris-setosa' : 0, 'Iris-versicolor' : 1 }
@@ -87,7 +86,7 @@ def sample_from_posterior(x, fwd, n=100):
   return np.array([ fwd(x).detach().numpy().reshape(-1) for _ in range(n) ])
 
 
-if __name__ == '__main__':
+def main():
   # generate data
   (train_x, train_y), (test_x, test_y) = iris()
 
@@ -130,3 +129,7 @@ if __name__ == '__main__':
     correcto = (((samples > 0.5) == yi.item()).sum())
     print('[{}] {}/{} with {}% certainty'.format(yi, correcto, num_samples,
       100. * correcto / num_samples))
+
+
+if __name__ == '__main__':
+  main()
